@@ -25,6 +25,7 @@ async function init() {
   renderPopulation(DATA.population);
   $("#details").innerHTML = DATA.details.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
   bindControls();
+  bindCardControls();
   renderSales();
   loadVault();      // on-chain, best effort
   loadOrderBook();  // Horizon, best effort
@@ -43,7 +44,7 @@ function renderMarket(rows) {
   const tbody = $("#market-table tbody");
   if (!rows.length) { tbody.innerHTML = `<tr><td colspan="6" class="muted" style="text-align:center">No cards in this category yet</td></tr>`; return; }
   tbody.innerHTML = rows.map((r) => `
-    <tr onclick="document.querySelector('#card').scrollIntoView({behavior:'smooth'})">
+    <tr onclick="openCard()">
       <td><div class="row-name">
         <img class="row-thumb" src="${r.live ? DATA.image : ""}" alt="" onerror="this.removeAttribute('src')">
         <div><div class="row-title">${r.name} <span class="grade-chip">${r.grade}</span>${r.live ? '<span class="live-dot" title="On-chain"></span>' : ""}</div>
@@ -87,13 +88,27 @@ function renderPopulation(pop) {
 function bindControls() {
   $("#market-tabs").addEventListener("click", (e) => {
     const b = e.target.closest("button"); if (!b) return;
+    selectTab(b);
+  });
+}
+
+// The Zekrom page lives under the Pokémon tab for now (it is the only card with a page).
+function selectTab(b) {
     $("#market-tabs .active")?.classList.remove("active"); b.classList.add("active");
+    $("#card").hidden = b.dataset.cat !== "Pokémon";
     if (b.dataset.cat === "cap") return showMarketCap();
-    $("#cap-grid").hidden = true; $("#market-table-wrap").hidden = false;
+    $("#cap-grid").hidden = true; $("#cap-filter").hidden = true; $("#market-table-wrap").hidden = false;
     $("#market-title").textContent = "Top cards";
     $("#market-sub").textContent = "Public price, 24h change, volume and sales. Every sale is a Stellar transaction, visible to anyone.";
     renderMarket(marketRows(b.dataset.cat));
-  });
+}
+
+function openCard() {
+  selectTab($('#market-tabs button[data-cat="Pokémon"]'));
+  $("#card").scrollIntoView({ behavior: "smooth" });
+}
+
+function bindCardControls() {
   $("#periods").addEventListener("click", (e) => {
     const b = e.target.closest("button"); if (!b) return;
     state.period = b.dataset.days;
@@ -290,18 +305,26 @@ async function loadTransactions(rate) {
 }
 
 /* ---------- Market cap (ranking) ---------- */
-let CAP;
+let CAP, capGame = "all";
 async function showMarketCap() {
   CAP = CAP || await (await fetch("data/market-cap.json")).json();
   $("#market-title").textContent = CAP.title;
   $("#market-sub").textContent = CAP.subtitle;
   $("#market-table-wrap").hidden = true;
-  const grid = $("#cap-grid"); grid.hidden = false;
-  grid.innerHTML = CAP.cards.map((c) => `
-    <a class="cap-card" href="#card">
+  $("#cap-filter").hidden = false;
+  $("#cap-grid").hidden = false;
+  renderMarketCap();
+}
+
+function renderMarketCap() {
+  const grid = $("#cap-grid");
+  const cards = CAP.cards.filter((c) => capGame === "all" || c.game === capGame);
+  if (!cards.length) { grid.innerHTML = `<p class="muted cap-empty">No ${capGame} cards in the ranking yet.</p>`; return; }
+  grid.innerHTML = cards.map((c, i) => `
+    <a class="cap-card" href="#card" onclick="event.preventDefault(); openCard()">
       <div class="cap-rank">
         <span class="cap-trend ${c.trend}">${c.trend === "up" ? "▲" : "▼"}</span>
-        <span class="cap-num">${c.rank}</span>
+        <span class="cap-num">${i + 1}</span>
       </div>
       <div class="cap-art" style="background: linear-gradient(135deg, ${c.art})">
         ${c.image ? `<img src="${c.image}" alt="${c.name}" loading="lazy">` : ""}
@@ -309,8 +332,15 @@ async function showMarketCap() {
       </div>
       <div class="cap-info">
         <div class="cap-name">${c.name}</div>
-        <div class="cap-set">${c.set}</div>
+        <div class="cap-set">${c.game} · ${c.set}</div>
       </div>
       <div class="cap-value">$${c.cap}M</div>
     </a>`).join("");
 }
+
+$("#cap-filter").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  $("#cap-filter .active")?.classList.remove("active"); b.classList.add("active");
+  capGame = b.dataset.game;
+  renderMarketCap();
+});

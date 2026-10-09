@@ -37,6 +37,12 @@
       <p class="muted" id="market-sub">Public price, 24h change, volume and sales. Every sale is a Stellar transaction, visible to anyone.</p>
     </div>
 
+    <div class="tabs cap-filter" id="cap-filter" hidden>
+      <button data-game="all" class="active">All</button>
+      <button data-game="Pokémon">Pokémon</button>
+      <button data-game="One Piece">One Piece</button>
+      <button data-game="Magic The Gathering">Magic The Gathering</button>
+    </div>
     <div class="cap-grid" id="cap-grid" hidden></div>
 
     <div class="table-wrap" id="market-table-wrap">
@@ -57,7 +63,7 @@
   </section>
 
   <!-- ====== Card ====== -->
-  <section id="card" class="section card-section">
+  <section id="card" class="section card-section" hidden>
 
     <aside class="card-visual">
       <div class="card3d" id="card3d">

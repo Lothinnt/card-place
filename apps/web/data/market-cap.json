@@ -11,7 +11,8 @@
       "cap": 146,
       "trend": "down",
       "art": "#f2c94c,#7fa7d9",
-      "image": "img/cap-01.jpg"
+      "image": "img/cap-01.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 2,
@@ -21,7 +22,8 @@
       "cap": 93,
       "trend": "down",
       "art": "#2b2d5c,#53c7a4",
-      "image": "img/cap-02.jpg"
+      "image": "img/cap-02.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 3,
@@ -31,7 +33,8 @@
       "cap": 80,
       "trend": "down",
       "art": "#d9b38c,#f2c94c",
-      "image": "img/cap-03.jpg"
+      "image": "img/cap-03.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 4,
@@ -41,7 +44,8 @@
       "cap": 70,
       "trend": "up",
       "art": "#e04b4b,#f2c94c",
-      "image": "img/cap-04.jpg"
+      "image": "img/cap-04.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 5,
@@ -51,7 +55,8 @@
       "cap": 62,
       "trend": "up",
       "art": "#2f7bd9,#bfe3ff",
-      "image": "img/cap-05.jpg"
+      "image": "img/cap-05.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 6,
@@ -61,7 +66,8 @@
       "cap": 58,
       "trend": "down",
       "art": "#e8862c,#8a3b1a",
-      "image": "img/cap-06.jpg"
+      "image": "img/cap-06.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 7,
@@ -71,7 +77,8 @@
       "cap": 57,
       "trend": "down",
       "art": "#1c3a73,#3fb0e8",
-      "image": "img/cap-07.jpg"
+      "image": "img/cap-07.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 8,
@@ -81,7 +88,8 @@
       "cap": 55,
       "trend": "down",
       "art": "#5b2d8a,#f2c94c",
-      "image": "img/cap-08.jpg"
+      "image": "img/cap-08.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 9,
@@ -91,7 +99,8 @@
       "cap": 45,
       "trend": "up",
       "art": "#3f9d6a,#e04b4b",
-      "image": "img/cap-09.jpg"
+      "image": "img/cap-09.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 10,
@@ -101,7 +110,8 @@
       "cap": 43,
       "trend": "down",
       "art": "#f0a35e,#8e4bd9",
-      "image": "img/cap-10.jpg"
+      "image": "img/cap-10.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 11,
@@ -111,7 +121,8 @@
       "cap": 42,
       "trend": "up",
       "art": "#2a4fa8,#e8c35e",
-      "image": "img/cap-11.jpg"
+      "image": "img/cap-11.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 12,
@@ -121,7 +132,8 @@
       "cap": 39,
       "trend": "down",
       "art": "#7a1f6e,#e04b4b",
-      "image": "img/cap-12.jpg"
+      "image": "img/cap-12.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 13,
@@ -131,7 +143,8 @@
       "cap": 38,
       "trend": "down",
       "art": "#f2c94c,#3fb0e8",
-      "image": "img/cap-13.jpg"
+      "image": "img/cap-13.jpg",
+      "game": "Pokémon"
     },
     {
       "rank": 14,
@@ -141,7 +154,8 @@
       "cap": 38,
       "trend": "down",
       "art": "#3f9d6a,#f2c94c",
-      "image": "img/cap-14.jpg"
+      "image": "img/cap-14.jpg",
+      "game": "Pokémon"
     }
   ]
 }

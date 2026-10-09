@@ -46,6 +46,12 @@ Côté vendeur :
 2. Je n'expédie qu'une fois l'argent bloqué en séquestre.
 3. Si je dépose ma carte en coffre, elle devient un jeton : je la revends sans l'expédier, autant de fois que je veux.
 
+<p align="center">
+  <img src="docs/screen-card.jpg" alt="Card Place — fiche de la Zekrom ex PSA 10 : historique des ventes, rareté, ventes récentes, dossier on-chain" width="100%">
+  <br><br>
+  <img src="docs/screen-market-cap.jpg" alt="Card Place — classement Market cap PSA 10" width="100%">
+</p>
+
 ### Le produit : une marketplace data-driven
 
 Chaque écran s'appuie sur une donnée que la chaîne rend publique et vérifiable :
