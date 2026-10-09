@@ -1,0 +1,147 @@
+{
+  "title": "Market cap",
+  "subtitle": "Ranked by highest market cap · PSA 10",
+  "note": "Market cap = last PSA 10 sale × PSA 10 population. Values are sample data from a public infographic. Card images from TCGdex, pokemontcg.io and Bulbagarden Archives, © Pokémon / Nintendo / Creatures / Game Freak.",
+  "cards": [
+    {
+      "rank": 1,
+      "name": "Pikachu with Grey Felt Hat",
+      "set": "Van Gogh Museum promo",
+      "year": 2023,
+      "cap": 146,
+      "trend": "down",
+      "art": "#f2c94c,#7fa7d9",
+      "image": "img/cap-01.jpg"
+    },
+    {
+      "rank": 2,
+      "name": "Umbreon VMAX alt art",
+      "set": "Evolving Skies 215/203",
+      "year": 2021,
+      "cap": 93,
+      "trend": "down",
+      "art": "#2b2d5c,#53c7a4",
+      "image": "img/cap-02.jpg"
+    },
+    {
+      "rank": 3,
+      "name": "Pikachu Kanazawa",
+      "set": "Pokémon Center Kanazawa promo 144/S-P",
+      "year": 2021,
+      "cap": 80,
+      "trend": "down",
+      "art": "#d9b38c,#f2c94c",
+      "image": "img/cap-03.jpg"
+    },
+    {
+      "rank": 4,
+      "name": "Mario Pikachu",
+      "set": "Pokémon Center promo 294/XY-P",
+      "year": 2016,
+      "cap": 70,
+      "trend": "up",
+      "art": "#e04b4b,#f2c94c",
+      "image": "img/cap-04.jpg"
+    },
+    {
+      "rank": 5,
+      "name": "Mew ex SIR (Bubble Mew)",
+      "set": "Paldean Fates 232/091",
+      "year": 2024,
+      "cap": 62,
+      "trend": "up",
+      "art": "#2f7bd9,#bfe3ff",
+      "image": "img/cap-05.jpg"
+    },
+    {
+      "rank": 6,
+      "name": "Charizard",
+      "set": "Base Set 4/102",
+      "year": 1999,
+      "cap": 58,
+      "trend": "down",
+      "art": "#e8862c,#8a3b1a",
+      "image": "img/cap-06.jpg"
+    },
+    {
+      "rank": 7,
+      "name": "Mega Charizard X ex",
+      "set": "Phantasmal Flames 125/094 SIR",
+      "year": 2025,
+      "cap": 57,
+      "trend": "down",
+      "art": "#1c3a73,#3fb0e8",
+      "image": "img/cap-07.jpg"
+    },
+    {
+      "rank": 8,
+      "name": "Poncho-wearing Pikachu",
+      "set": "Mega Charizard X poncho · 207/XY-P",
+      "year": 2016,
+      "cap": 55,
+      "trend": "down",
+      "art": "#5b2d8a,#f2c94c",
+      "image": "img/cap-08.jpg"
+    },
+    {
+      "rank": 9,
+      "name": "Rayquaza VMAX alt art",
+      "set": "Evolving Skies 218/203",
+      "year": 2021,
+      "cap": 45,
+      "trend": "up",
+      "art": "#3f9d6a,#e04b4b",
+      "image": "img/cap-09.jpg"
+    },
+    {
+      "rank": 10,
+      "name": "Charizard ex SIR",
+      "set": "Obsidian Flames 223/197",
+      "year": 2023,
+      "cap": 43,
+      "trend": "down",
+      "art": "#f0a35e,#8e4bd9",
+      "image": "img/cap-10.jpg"
+    },
+    {
+      "rank": 11,
+      "name": "Mega Lucario ex",
+      "set": "Mega Evolution 179/132 SIR",
+      "year": 2025,
+      "cap": 42,
+      "trend": "up",
+      "art": "#2a4fa8,#e8c35e",
+      "image": "img/cap-11.jpg"
+    },
+    {
+      "rank": 12,
+      "name": "Gengar VMAX alt art",
+      "set": "Fusion Strike 271/264",
+      "year": 2021,
+      "cap": 39,
+      "trend": "down",
+      "art": "#7a1f6e,#e04b4b",
+      "image": "img/cap-12.jpg"
+    },
+    {
+      "rank": 13,
+      "name": "Pikachu 20th Anniversary Festa",
+      "set": "Festa participation prize · 279/XY-P",
+      "year": 2016,
+      "cap": 38,
+      "trend": "down",
+      "art": "#f2c94c,#3fb0e8",
+      "image": "img/cap-13.jpg"
+    },
+    {
+      "rank": 14,
+      "name": "Luigi Pikachu",
+      "set": "Pokémon Center promo 296/XY-P",
+      "year": 2016,
+      "cap": 38,
+      "trend": "down",
+      "art": "#3f9d6a,#f2c94c",
+      "image": "img/cap-14.jpg"
+    }
+  ]
+}
