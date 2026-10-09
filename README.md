@@ -251,14 +251,14 @@ Pour tester le paiement en XLM plutôt qu'en USDC (pas de faucet nécessaire), c
 
 ### 5. La page de la carte (marketplace)
 
-Une page HTML sans framework ni build, dans `apps/web/`, en ligne sur **https://lothinnt.github.io/card-place/apps/web/** : menu par catégorie et classement Market cap, fiche de la Zekrom avec carte recto/verso, historique des ventes avec courbe, rareté, ventes récentes, dossier de la carte lu dans le contrat, prix d'achat en direct depuis le carnet d'ordres Stellar.
+Une page HTML sans framework ni build, dans `apps/web/`, à lancer en local : menu par catégorie et classement Market cap, fiche de la Zekrom avec carte recto/verso, historique des ventes avec courbe, rareté, ventes récentes, dossier de la carte lu dans le contrat, prix d'achat en direct depuis le carnet d'ordres Stellar.
 
 ```sh
 node apps/web/serve.mjs                           # http://localhost:8080/apps/web/
 sh apps/web/seed-market.sh                        # place un ordre de vente et un ordre d'achat sur le DEX Stellar
 ```
 
-- Le **dossier de la carte** est lu en direct via l'agent (`GET /vault/:code`), lancé avec `npm start` dans `apps/agent`. En ligne, sans agent, la page affiche « service offline » et le reste fonctionne.
+- Le **dossier de la carte** est lu en direct via l'agent (`GET /vault/:code`), lancé avec `npm start` dans `apps/agent`.
 - Le **prix d'achat** du bouton Buy now et les **transactions du jeton** sont lus en direct sur Horizon, l'API publique de Stellar, pour la paire `PSA137798077 / XLM`.
 - L'historique des ventes, la population, le tableau du marché et le classement Market cap sont des données de démonstration dans `apps/web/data/`. Les images du classement viennent de TCGdex, pokemontcg.io et des archives Bulbagarden.
 
