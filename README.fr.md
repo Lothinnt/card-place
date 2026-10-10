@@ -267,7 +267,7 @@ contracts/vault/src/lib.rs    # le contrat du coffre, ~150 lignes commentées
 contracts/vault/src/test.rs   # 11 tests
 apps/agent/src/               # config, vault, photos, appraise, paywall, payer, server
 apps/agent/scripts/           # x402-smoke.mjs, pay-and-appraise.mjs
-demo-web-page/                     # single page : index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
+demo-web-page/                # single page : index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
 docs/                         # photos de référence de la carte, schéma d'architecture (.excalidraw + .svg)
 README.md                     # ce README en anglais
 VISION.md                     # la vision hackathon (2000 caractères)
