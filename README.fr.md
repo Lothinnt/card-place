@@ -10,7 +10,7 @@ Pour acheter une action ou une crypto aujourd'hui, vous avez le choix entre plus
 
 Les cartes à collectionner sont devenues un véritable investissement, et c'est un phénomène en pleine expansion.
 
-Je suis collectionneur, mais aussi Lothin, cofondateur de [Graded Card Shop](https://gradedcardshop.fr) : j'achète et je vends des cartes gradées. Nous avons ouvert en février ; nous sommes aujourd'hui à 53 000 € de cartes vendues, sans publicité, uniquement en postant sur des plateformes comme Vinted et eBay.
+Je suis collectionneur, mais aussi Lothin, cofondateur de [Graded Card Shop](https://gradedcardshop.fr) : j'achète et je vends des cartes gradées. Nous avons ouvert en février ; nous avons déjà réalisé plus de 300 ventes, sans publicité, uniquement en postant sur des plateformes comme Vinted et eBay.
 
 Avant même de vendre en tant que professionnel, je le voyais en tant que collectionneur. Ce marché souffre de quatre maux :
 

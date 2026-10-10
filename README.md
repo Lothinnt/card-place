@@ -10,7 +10,7 @@ To buy a stock or a crypto today, you can choose between several secure platform
 
 Trading cards have become a real investment, and the market is growing fast.
 
-I am a collector, and I am also Lothin, co-founder of [Graded Card Shop](https://gradedcardshop.fr): we buy and sell graded cards. We opened in February; we have now sold €53,000 worth of cards, with no advertising, only by listing on platforms like Vinted and eBay.
+I am a collector, and I am also Lothin, co-founder of [Graded Card Shop](https://gradedcardshop.fr): we buy and sell graded cards. We opened in February; we have already made more than 300 sales, with no advertising, only by listing on platforms like Vinted and eBay.
 
 Even before selling professionally, I saw it as a collector. This market suffers from four problems:
 
