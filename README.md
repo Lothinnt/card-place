@@ -1,186 +1,171 @@
 # Card Place — The first secure card exchange
 
-**Un exchange sécurisé pour investir dans les cartes à collectionner comme dans une action** : carnet d'ordres, prix public, historique des ventes dans la blockchain, graphique, authentification au centre, et la possibilité de laisser la carte en coffre : l'article peut se vendre plusieurs fois tout en restant au même endroit.
+**English** · [Français](README.fr.md)
 
-## Le problème
+**A secure exchange to invest in trading cards the way you invest in a stock**: an order book, a public price, sales history on the blockchain, charts, authentication at the core, and the option to leave the card in a vault, so the item can be sold many times while staying in the same place.
 
-Pour acheter une action ou une crypto aujourd'hui, vous avez le choix entre plusieurs plateformes sécurisées. Le spread est faible, le prix est le même chez tous les brokers, vous avez des graphiques, un historique clair, vous décidez en connaissance de cause, et en un clic vous devenez propriétaire de l'objet.
+## The problem
 
-Les cartes à collectionner sont devenues un véritable investissement, et c'est un phénomène en pleine expansion.
+To buy a stock or a crypto today, you can choose between several secure platforms. The spread is tight, the price is the same at every broker, you get charts and a clear history, you decide with full information, and one click makes you the owner.
 
-Je suis collectionneur, mais aussi Lothin, cofondateur de [Graded Card Shop](https://gradedcardshop.fr) : j'achète et je vends des cartes gradées. Nous avons ouvert en février ; nous sommes aujourd'hui à 53 000 € de cartes vendues, sans publicité, uniquement en postant sur des plateformes comme Vinted et eBay.
+Trading cards have become a real investment, and the market is growing fast.
 
-Avant même de vendre en tant que professionnel, je le voyais en tant que collectionneur. Ce marché souffre de quatre maux :
+I am a collector, and I am also Lothin, co-founder of [Graded Card Shop](https://gradedcardshop.fr): we buy and sell graded cards. We opened in February; we have now sold €53,000 worth of cards, with no advertising, only by listing on platforms like Vinted and eBay.
 
-1. **L'opacité des prix.** Il n'existe pas de prix de référence public. Les ventes se font en privé, sur des plateformes qui ne publient pas leur historique de façon claire, avec des écarts parfois de 10 % entre deux plateformes pour la même carte. L'acheteur ne sait pas s'il paie le juste prix, le vendeur ne sait pas s'il brade.
-2. **L'état de la carte.** L'état influe sur le prix : une carte en mauvais état ne vaut pas le prix d'une carte en bon état. La notation est subjective, selon l'acheteur ou le vendeur. Beaucoup d'arnaques et de défauts intentionnellement dissimulés existent, et aucun organisme ne permet de valider l'état d'une carte brute.
-3. **La contrefaçon.** Cartes falsifiées, mais aussi boîtiers scellés refaits, cartes retouchées avec l'IA. Les arnaques sont massives : chaque transaction oblige à refaire confiance à un inconnu.
-4. **Le transport et le stockage.** Les assurances ne couvrent pas toujours le vol lors de l'envoi. Des cartes s'abîment en transit parce qu'elles sont mal emballées, par manque de pratique ou de connaissance. On constate aussi une hausse des cambriolages visant exclusivement les collectionneurs de cartes.
+Even before selling professionally, I saw it as a collector. This market suffers from four problems:
 
-**Card Place vise toutes les cartes, mais attaque d'abord les cartes gradées.** Elles sont déjà authentifiées et notées par un tiers (PSA, PCA, BGS), scellées dans un boîtier, identifiées par un numéro de certificat unique. Leur prix est plus liquide et leur état est figé. C'est le marché le plus facile à sécuriser, et le point d'entrée naturel avant d'étendre le service d'authentification aux cartes brutes.
+1. **Opaque prices.** There is no public reference price. Sales happen privately, on platforms that don't publish their history clearly, with gaps of sometimes 10% between two platforms for the same card. The buyer doesn't know if they are paying a fair price; the seller doesn't know if they are underselling.
+2. **The card's condition.** Condition drives price: a card in poor shape isn't worth what a card in good shape is. Grading is subjective, depending on the buyer or the seller. Scams and deliberately hidden defects are common, and no organisation validates the condition of a raw card.
+3. **Counterfeits.** Fake cards, but also resealed slabs and cards retouched with AI. Scams are widespread: every transaction means trusting a stranger again.
+4. **Shipping and storage.** Insurance doesn't always cover theft in transit. Cards get damaged on the way because they are badly packed, from lack of practice or knowledge. Burglaries targeting card collectors specifically are also on the rise.
 
-## Ce que fait le projet
+**Card Place targets all cards, but starts with graded cards.** They are already authenticated and graded by a third party (PSA, PCA, BGS), sealed in a slab, and identified by a unique certificate number. Their price is more liquid and their condition is frozen. It is the easiest market to secure, and the natural entry point before extending authentication to raw cards.
 
-La marketplace met en relation acheteurs et vendeurs, avec la possibilité de faire authentifier le produit si l'acheteur le demande, et des procédures claires données à chaque partie pour que la transaction se déroule convenablement. Une marketplace plus sûre, où il est possible de payer en monnaie fiat mais aussi en cryptomonnaie sur la blockchain Stellar (XLM, USDC).
-
-Card Place joue le rôle de **séquestre** (escrow) : l'argent de l'acheteur est bloqué tant que la carte n'est pas arrivée et vérifiée, et la carte ne part que quand l'argent est bloqué. Ni l'acheteur ni le vendeur n'a à faire confiance à l'autre.
-
-La marketplace fournit des données fiables qui permettent aux utilisateurs de prendre des décisions d'investissement plus pertinentes : un top des cartes les plus échangées en ce moment, tous TCG inclus, et des informations clés comme l'historique des ventes, le prix de référence et le graphique de performance.
-
-Nous offrons au vendeur la possibilité de déposer sa carte dans un coffre-fort. Elle est alors représentée par **un actif Stellar natif** (code = numéro de certificat, 1 unité émise). Le jeton s'échange sur le carnet d'ordres natif, en 5 secondes, pour une fraction de centime, ce qui sécurise et facilite les transactions. Le physique ne voyage qu'une fois : quand le détenteur final appelle `redeem()`, rend le jeton et reçoit la carte.
-
-**Phrase de démo :** je montre que trois piliers portent chaque échange : un smart contract Soroban qui tient la carte en coffre et bloque l'argent en séquestre ; x402 sur Stellar pour que les services se paient à l'appel en USDC ; et l'IA là où elle est utile, un agent de code pour construire et déployer le contrat, un agent d'expertise payé à l'appel, jamais dans la validation des transactions, qui reste du code déterministe.
-
-### Le parcours utilisateur
-
-Côté acheteur :
-
-1. Je veux acheter une carte : je paie en monnaie fiat ou en cryptomonnaie. Mon argent est bloqué en séquestre.
-2. Je peux négocier le prix demandé par le vendeur.
-3. Je choisis de me faire expédier la carte, ou de demander une expertise et de transformer cet actif, sécurisé dans notre coffre-fort, en jeton Stellar.
-4. Quand la carte est arrivée et vérifiée, le séquestre libère le paiement au vendeur.
-
-Côté vendeur :
-
-1. Je mets ma carte sur la plateforme au prix souhaité, puis j'accepte ou je refuse les offres des acheteurs.
-2. Je n'expédie qu'une fois l'argent bloqué en séquestre.
-3. Si je dépose ma carte en coffre, elle devient un jeton : je la revends sans l'expédier, autant de fois que je veux.
+## What the project does
 
 <p align="center">
-  <img src="docs/screen-card.jpg" alt="Card Place — fiche de la Zekrom ex PSA 10 : historique des ventes, rareté, ventes récentes, dossier on-chain" width="100%">
-  <br><br>
-  <img src="docs/screen-market-cap.jpg" alt="Card Place — classement Market cap PSA 10" width="100%">
+  <img src="docs/screen-card.jpg" alt="Card Place — Zekrom ex PSA 10 card page: sales history, rarity, recent sales, on-chain record" width="100%">
 </p>
 
-### Le produit : une marketplace data-driven
+The marketplace connects buyers and sellers, with optional authentication of the item if the buyer asks for it, and clear procedures for each party so the transaction goes smoothly. A safer marketplace, where you can pay in fiat or in crypto on the Stellar blockchain (XLM, USDC).
 
-Chaque écran s'appuie sur une donnée que la chaîne rend publique et vérifiable :
+Card Place acts as **escrow**: the buyer's money is locked until the card has arrived and been checked, and the card only ships once the money is locked. Neither buyer nor seller has to trust the other.
 
-| Écran | Ce qu'il montre | D'où vient la donnée |
+The marketplace provides reliable data so users can make better investment decisions: a ranking of the most traded cards right now, across all TCGs, and key information such as sales history, reference price and performance chart.
+
+Sellers can deposit their card in a vault. It is then represented by **a native Stellar asset** (code = certificate number, 1 unit issued). The token trades on the native order book in 5 seconds for a fraction of a cent, which makes transactions safer and easier. The physical card only travels once: when the final holder calls `redeem()`, returns the token and receives the card.
+
+**Demo line:** three pillars carry every trade: a Soroban smart contract that holds the card in the vault and locks the money in escrow; x402 on Stellar so services get paid per call in USDC; and AI where it helps, a coding agent to build and deploy the contract and an appraisal agent paid per call, never in transaction validation, which stays deterministic code.
+
+### The user journey
+
+Buyer side:
+
+1. I want to buy a card: I pay in fiat or crypto. My money is locked in escrow.
+2. I can negotiate the seller's asking price.
+3. I choose to have the card shipped to me, or to request an appraisal and turn the asset, secured in our vault, into a Stellar token.
+4. When the card has arrived and been checked, escrow releases the payment to the seller.
+
+Seller side:
+
+1. I list my card at the price I want, then accept or reject buyers' offers.
+2. I only ship once the money is locked in escrow.
+3. If I deposit my card in the vault, it becomes a token: I can resell it without shipping it, as many times as I like.
+
+### The product: a data-driven marketplace
+
+Every screen relies on data the chain makes public and verifiable:
+
+| Screen | What it shows | Where the data comes from |
 |---|---|---|
-| Fiche d'identité | série, extension, numéro, rareté, gradeur, certificat, note, photo | la fiche on-chain du contrat + le hash de la photo |
-| Prix de référence, offre vs demande | meilleur prix d'achat, meilleur prix de vente, écart | le carnet d'ordres natif Stellar, public |
-| Historique des ventes | chaque transaction, prix, date, note | les transactions du jeton sur le ledger, lisibles par tous |
-| Graphique de performance | évolution du prix sur 7 j, 1 m, 1 an | le même historique, agrégé |
-| Statistiques marché | plus bas, plus haut, volume 30 j, nombre de ventes | idem |
-| Indice de confiance | certificat vérifié chez le gradeur, cohérence étiquette / fiche / photo, état visible | l'agent IA d'expertise, payé à l'appel |
+| Identity card | set, expansion, number, rarity, grader, certificate, grade, photo | the contract's on-chain record + the photo hash |
+| Reference price, bid vs ask | best bid, best ask, spread | the native Stellar order book, public |
+| Sales history | every trade, price, date, grade | the token's transactions on the ledger, readable by anyone |
+| Performance chart | price over 7 d, 1 m, 1 y | the same history, aggregated |
+| Market stats | low, high, 30-day volume, number of sales | same |
+| Trust score | certificate checked with the grader, label / record / photo consistency, visible condition | the AI appraisal agent, paid per call |
 
-### La sécurité, concrètement
+### Security, concretely
 
-- **Le séquestre.** Les USDC de l'acheteur sont verrouillés dans un contrat, pas chez le vendeur ni chez Card Place. La libération et le remboursement obéissent à des règles écrites dans le contrat : confirmation de l'acheteur, livraison confirmée, délai dépassé. Un programme sans IA écoute le transporteur et les événements on-chain et déclenche ces règles.
-- **Aucune IA dans la validation des transactions.** Valider un paiement, libérer un séquestre, brûler un jeton : c'est du code déterministe, testé, lisible. Ajouter une couche IA sur des données financières ajouterait du risque, pas de la sécurité. L'IA sert ailleurs : pour construire et déployer le contrat (un agent de code branché sur Raven, le serveur MCP de Stellar, guidé par `AGENTS.md`), et pour l'expertise d'une carte, un service d'information payé à l'appel qui ne touche jamais aux fonds.
-- **Seul le dépositaire peut créer le jeton.** L'actif est émis par le compte du coffre. Une carte qui n'est pas physiquement en coffre n'a pas de jeton, donc ne peut pas être vendue comme telle. Un faux, une photo volée ou un boîtier refermé ne produisent rien.
-- **L'authentification est physique, à l'entrée en coffre.** Le dépositaire examine la carte et son boîtier, et confronte le numéro de certificat à la base publique du gradeur. Le jeton n'est émis qu'après.
-- **La photo de référence est prise par le dépositaire**, pas fournie par le vendeur. Son hash on-chain garantit que personne ne remplace la photo après coup. C'est l'intégrité du dossier, pas l'authentification.
-- **L'agent IA identifie la carte, il ne remplace pas l'authentification physique.** Il croise trois sources : la fiche publique du gradeur (PSA, PCA publient chaque certificat par numéro), l'étiquette du boîtier lue sur la photo, et la fiche on-chain. Si les trois concordent, la carte est identifiée et il note l'état visible. Si une seule diverge, revue humaine.
-- **La chaîne rend le dossier infalsifiable ; la sécurité physique dépend du processus du dépositaire.** C'est vrai de StockX aussi. L'empreinte physique de la carte est la prochaine brique, décrite en fin de document.
+- **Escrow.** The buyer's USDC is locked in a contract, not with the seller or with Card Place. Release and refund follow rules written in the contract: buyer confirmation, confirmed delivery, timeout. A program with no AI listens to the carrier and on-chain events and triggers those rules.
+- **No AI in transaction validation.** Validating a payment, releasing escrow, burning a token: that is deterministic, tested, readable code. Adding an AI layer on financial data would add risk, not security. AI is used elsewhere: to build and deploy the contract (a coding agent connected to Raven, Stellar's MCP server, guided by `AGENTS.md`), and to appraise a card, an information service paid per call that never touches funds.
+- **Only the custodian can create the token.** The asset is issued by the vault account. A card that isn't physically in the vault has no token, so it can't be sold as such. A fake, a stolen photo or a resealed slab produce nothing.
+- **Authentication is physical, at vault intake.** The custodian examines the card and its slab, and checks the certificate number against the grader's public database. The token is only issued after that.
+- **The reference photo is taken by the custodian**, not supplied by the seller. Its on-chain hash guarantees nobody can swap the photo afterwards. That is record integrity, not authentication.
+- **The AI agent identifies the card; it does not replace physical authentication.** It cross-checks three sources: the grader's public record (PSA and PCA publish every certificate by number), the slab label read from the photo, and the on-chain record. If all three agree, the card is identified and it rates the visible condition. If any one diverges, a human reviews it.
+- **The chain makes the record tamper-proof; physical security depends on the custodian's process.** That is true of StockX too. A physical fingerprint of the card is the next building block, described at the end of this document.
 
-## Sous le capot : ce qui tourne aujourd'hui sur le testnet
+## Under the hood: what runs on testnet today
 
-Un seul parcours on-chain, complet, exécuté avec une vraie carte du stock :
+One complete on-chain journey, executed with a real card from our stock:
 
-1. Le dépositaire authentifie la carte, la met en coffre et l'enregistre on-chain : certificat, note, hash SHA-256 de la photo. → `register_card`
-2. Le jeton circule librement : paiement, carnet d'ordres, trustline = consentement du receveur.
-3. Un agent IA, payé à l'appel en USDC via **x402 sur Stellar**, vérifie que la photo est celle du contrat, lit l'étiquette du boîtier, la compare à la fiche on-chain et au certificat publié par le gradeur, et évalue l'état.
-4. Le détenteur rend le jeton et demande la sortie. → `redeem` (le SAC brûle le jeton)
-5. Le dépositaire confirme l'expédition avec le numéro de suivi. → `mark_shipped`
+1. The custodian authenticates the card, puts it in the vault and registers it on-chain: certificate, grade, SHA-256 hash of the photo. → `register_card`
+2. The token moves freely: payments, order book, trustline = the receiver's consent.
+3. An AI agent, paid per call in USDC via **x402 on Stellar**, checks that the photo is the one in the contract, reads the slab label, compares it with the on-chain record and the certificate published by the grader, and rates the condition.
+4. The holder returns the token and requests the card. → `redeem` (the SAC burns the token)
+5. The custodian confirms shipping with the tracking number. → `mark_shipped`
 
-## Pourquoi Stellar
+## Why Stellar
 
-Remplace Stellar par une base de données : il faudrait un intermédiaire de confiance pour tenir les soldes et publier les prix, des délais de règlement et des frais à chaque revente. Sur Stellar :
+Replace Stellar with a database and you need a trusted intermediary to hold balances and publish prices, plus settlement delays and fees on every resale. On Stellar:
 
-- **Un token n'est pas un contrat.** Une carte = code + émetteur, 1 unité. Émettre, c'est deux transactions.
-- **Le marché est déjà dans le protocole.** Le carnet d'ordres natif échange la carte contre XLM ou USDC sans code de marketplace, et il est public : c'est la fin de l'opacité des prix.
-- **Chaque vente est une transaction publique.** L'historique des prix d'une carte est vérifiable par n'importe qui, sans dépendre de la plateforme.
-- **L'échange est atomique.** Jeton contre USDC dans une seule transaction : soit les deux jambes passent, soit aucune. Le séquestre ne sert que pour les mouvements physiques.
-- **La trustline, c'est le consentement.** Personne ne reçoit une carte sans l'avoir acceptée.
-- **Les frais permettent une carte à 10 €**, ce qui est impossible ailleurs économiquement.
-- **Le fiat entre et sort par les anchors** (SEP-24, MoneyGram) : l'acheteur paie en euros, le ledger règle en USDC.
-- **x402 sur Stellar** fait payer les agents dans la même monnaie que les collectionneurs, avec frais sponsorisés par le facilitator.
+- **A token is not a contract.** One card = code + issuer, 1 unit. Issuing takes two transactions.
+- **The market is already in the protocol.** The native order book trades the card against XLM or USDC with no marketplace code, and it is public: the end of opaque prices.
+- **Every sale is a public transaction.** A card's price history can be verified by anyone, without depending on the platform.
+- **The trade is atomic.** Token against USDC in a single transaction: both legs settle or neither does. Escrow is only needed for physical movements.
+- **A trustline is consent.** Nobody receives a card without having accepted it.
+- **Fees make a €10 card viable**, which is economically impossible elsewhere.
+- **Fiat goes in and out through anchors** (SEP-24, MoneyGram): the buyer pays in euros, the ledger settles in USDC.
+- **x402 on Stellar** lets agents pay in the same currency as collectors, with fees sponsored by the facilitator.
 
-Le contrat ne fait que ce que le protocole ne sait pas faire : lier le jeton au certificat, tenir l'état physique, et gérer la sortie.
+The contract only does what the protocol can't: bind the token to the certificate, track the physical state, and handle redemption.
 
-Honnêteté : [StockX](https://stockx.com) a prouvé le modèle carnet d'ordres + authentification pour les sneakers, sans blockchain. [Courtyard](https://courtyard.io) tokenise des cartes PSA sur Polygon. L'angle de Card Place est la niche européenne (PCA, PSA FR), un vendeur qui est lui-même le dépositaire, les cartes à bas prix que les frais d'ailleurs excluent, et le prix public comme produit. x402 existe aussi sur d'autres chaînes.
+To be honest: [StockX](https://stockx.com) proved the order book + authentication model for sneakers, without a blockchain. [Courtyard](https://courtyard.io) tokenises PSA cards on Polygon. Card Place's angle is the European niche (PCA, PSA FR), a seller who is also the custodian, low-priced cards that fees exclude elsewhere, and the public price as the product. x402 also exists on other chains.
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    subgraph Stellar["Stellar testnet"]
-        T["Actif natif PSA137798077<br/>1 unité, émetteur = dépositaire"]
-        OB["Carnet d'ordres natif<br/>prix public, historique public"]
-        V["Contrat Soroban : le coffre<br/>cert · note · hash photo · état"]
-        USDC["USDC (SEP-41)"]
-    end
+<p align="center">
+  <img src="docs/architecture.svg" alt="Card Place architecture: custodian, collector, Soroban vault contract, card token, native order book, USDC, AI appraisal agent, x402 facilitator" width="100%">
+</p>
 
-    D["Dépositaire<br/>Graded Card Shop"] -- "register_card<br/>mark_shipped" --> V
-    C["Collectionneur"] <-- "achète / revend" --> OB
-    OB --- T
-    C -- "redeem : rend le jeton,<br/>demande l'expédition" --> V
-    V -- "transfert SAC → émetteur = burn" --> T
+Source: [`docs/architecture.excalidraw`](docs/architecture.excalidraw), editable at [excalidraw.com](https://excalidraw.com) (Open → select the file).
 
-    A["Agent IA d'expertise<br/>apps/agent"] -- "get_card (lecture)" --> V
-    W["Wallet d'agent plafonné<br/>(l'acheteur)"] -- "POST /api/appraise<br/>402 → paiement → 200" --> A
-    W -- "0,01 USDC" --> USDC
-    F["Facilitator x402"] -- "vérifie, règle, sponsorise les frais" --> USDC
-```
+How to read it: the custodian writes the record, the market lives on the native order book, the agent reads the record and gets paid in USDC, and `redeem` burns the token and triggers shipping.
 
-Lecture : le dépositaire écrit la fiche, le marché vit sur le carnet d'ordres natif, l'agent lit la fiche et se fait payer en USDC, le `redeem` brûle le jeton et déclenche l'expédition.
+## Technical specs
 
-## Specs techniques
+### Contract `contracts/vault` (Rust, `soroban-sdk` 28, target `wasm32v1-none`)
 
-### Contrat `contracts/vault` (Rust, `soroban-sdk` 28, cible `wasm32v1-none`)
-
-| Fonction | Auth | Entrées | Sortie | Effet |
+| Function | Auth | Inputs | Output | Effect |
 |---|---|---|---|---|
-| `__constructor(custodian)` | déploiement | `Address` | — | fixe le dépositaire (instance storage) |
-| `custodian()` | aucune | — | `Address` | lecture |
-| `register_card(asset_code, token, grader, cert, grade, description, photo_hash)` | dépositaire | `Symbol, Address, Symbol, Symbol, u32, String, BytesN<32>` | `Result<(), Error>` | crée la fiche, état `InVault`. Erreur `CardAlreadyRegistered` (1) |
-| `redeem(holder, asset_code)` | détenteur | `Address, Symbol` | `Result<(), Error>` | transfère 1 unité du jeton (SAC) vers le dépositaire, état `RedeemRequested`. Erreurs `CardNotFound` (2), `InvalidStatus` (3) |
-| `mark_shipped(asset_code, tracking)` | dépositaire | `Symbol, String` | `Result<(), Error>` | état `Shipped`, enregistre le suivi. Erreur `InvalidStatus` si pas `RedeemRequested` |
-| `get_card(asset_code)` | aucune | `Symbol` | `Result<Card, Error>` | lecture publique |
+| `__constructor(custodian)` | deployment | `Address` | — | sets the custodian (instance storage) |
+| `custodian()` | none | — | `Address` | read |
+| `register_card(asset_code, token, grader, cert, grade, description, photo_hash)` | custodian | `Symbol, Address, Symbol, Symbol, u32, String, BytesN<32>` | `Result<(), Error>` | creates the record, state `InVault`. Error `CardAlreadyRegistered` (1) |
+| `redeem(holder, asset_code)` | holder | `Address, Symbol` | `Result<(), Error>` | transfers 1 unit of the token (SAC) to the custodian, state `RedeemRequested`. Errors `CardNotFound` (2), `InvalidStatus` (3) |
+| `mark_shipped(asset_code, tracking)` | custodian | `Symbol, String` | `Result<(), Error>` | state `Shipped`, stores tracking. Error `InvalidStatus` if not `RedeemRequested` |
+| `get_card(asset_code)` | none | `Symbol` | `Result<Card, Error>` | public read |
 
-**Stockage.** `Custodian` en *instance*. Chaque `Card(asset_code)` en *persistent*, TTL prolongé à chaque écriture (seuil 30 jours, cible 1 an). Pas de `Vec` ni de boucle : coût constant par appel.
+**Storage.** `Custodian` in *instance*. Each `Card(asset_code)` in *persistent*, TTL extended on every write (threshold 30 days, target 1 year). No `Vec` and no loops: constant cost per call.
 
-**Fiche `Card`.** `token` (adresse SAC), `grader`, `cert`, `grade`, `description`, `photo_hash` (SHA-256 du recto), `status`, `redeemer: Option<Address>`, `tracking: Option<String>`, `registered_at` (ledger).
+**`Card` record.** `token` (SAC address), `grader`, `cert`, `grade`, `description`, `photo_hash` (SHA-256 of the front), `status`, `redeemer: Option<Address>`, `tracking: Option<String>`, `registered_at` (ledger).
 
-**Sécurité.** Transitions strictes `InVault → RedeemRequested → Shipped`. `redeem` exige l'auth du détenteur, qui couvre le sous-appel `transfer` du SAC : personne ne peut rendre le jeton d'un autre. Si le détenteur n'a pas le jeton, le transfert échoue et rien n'est modifié. 11 tests unitaires couvrent le cycle complet et chaque refus.
+**Security.** Strict transitions `InVault → RedeemRequested → Shipped`. `redeem` requires the holder's auth, which covers the SAC `transfer` sub-call: nobody can return someone else's token. If the holder doesn't own the token, the transfer fails and nothing changes. 11 unit tests cover the full cycle and every rejection.
 
 ### Agent `apps/agent` (Node 22, ESM, Express 5)
 
-| Route | Prix | Rôle |
+| Route | Price | Role |
 |---|---|---|
-| `GET /health` | gratuit | état du service |
-| `GET /vault/:asset_code` | gratuit | fiche on-chain, lue par simulation RPC |
-| `POST /api/appraise` `{ asset_code }` | 0,01 USDC via x402 | lit la fiche, vérifie l'empreinte de la photo, Claude lit l'étiquette, la compare à la fiche et au certificat du gradeur, évalue l'état et estime. La consultation du certificat chez le gradeur (API PSA, page PCA) est prévue à Lisbonne |
+| `GET /health` | free | service status |
+| `GET /vault/:asset_code` | free | on-chain record, read through RPC simulation |
+| `POST /api/appraise` `{ asset_code }` | 0.01 USDC via x402 | reads the record, checks the photo fingerprint; Claude reads the label, compares it with the record and the grader's certificate, rates the condition and estimates value. Looking up the certificate with the grader (PSA API, PCA page) is planned for Lisbon |
 
-Un module par responsabilité : `config.js` (environnement), `vault.js` (lecture du contrat), `photos.js` (SHA-256), `appraise.js` (Claude, sortie structurée par schéma), `paywall.js` (x402 Stellar), `payer.js` (wallet d'agent plafonné), `server.js` (routes).
+One module per responsibility: `config.js` (environment), `vault.js` (contract reads), `photos.js` (SHA-256), `appraise.js` (Claude, schema-structured output), `paywall.js` (x402 Stellar), `payer.js` (capped agent wallet), `server.js` (routes).
 
-**x402 sur Stellar.** `@x402/express` + `@x402/stellar`, facilitator testnet hébergé par OpenZeppelin, réseau `stellar:testnet`, actif USDC SEP-41. Le client signe une entrée d'autorisation Soroban ; le facilitator reconstruit la transaction, sponsorise les frais et règle. Le client refuse de signer au-delà du plafond `AGENT_MAX_USD_PER_PAYMENT`.
+**x402 on Stellar.** `@x402/express` + `@x402/stellar`, testnet facilitator hosted by OpenZeppelin, network `stellar:testnet`, SEP-41 USDC asset. The client signs a Soroban authorization entry; the facilitator rebuilds the transaction, sponsors the fees and settles. The client refuses to sign above the `AGENT_MAX_USD_PER_PAYMENT` cap.
 
-**L'agent IA ne détient aucune clé Stellar et ne signe aucune transaction.** Il propose ; le détenteur et le dépositaire disposent.
+**The AI agent holds no Stellar key and signs no transaction.** It proposes; the holder and the custodian decide.
 
-## Déployé sur le testnet
+## Deployed on testnet
 
-| Quoi | Adresse / transaction |
+| What | Address / transaction |
 |---|---|
-| Dépositaire et déployeur | [`GBNZP4YND7GXOM26YNBOAXIMTEMKNHDX7CQ5VZOJ3VKW7HDJSQR3XK75`](https://stellar.expert/explorer/testnet/account/GBNZP4YND7GXOM26YNBOAXIMTEMKNHDX7CQ5VZOJ3VKW7HDJSQR3XK75) |
-| **Contrat du coffre** | [`CDN5OOWTOYKEXMH5CDG7APQRQEHGFRKWQEAHQR5XR3643YOM2YEMEMRO`](https://stellar.expert/explorer/testnet/contract/CDN5OOWTOYKEXMH5CDG7APQRQEHGFRKWQEAHQR5XR3643YOM2YEMEMRO) |
-| Déploiement | [`5833d9…978d1`](https://stellar.expert/explorer/testnet/tx/5833d98dd4230adee7f78feb8b34dcf8d8a190cb453c7b0dbf224c1ab25978d1) |
-| Actif carte `PSA137798077` (SAC) | [`CASKFD5AFFRLUEW6YJUQRSTXJ7MQU7ZMUCMW254G4CR5QJ45Q5DYNVKH`](https://stellar.expert/explorer/testnet/contract/CASKFD5AFFRLUEW6YJUQRSTXJ7MQU7ZMUCMW254G4CR5QJ45Q5DYNVKH) |
-| Collectionneur (détenteur) | [`GCR6HZKROPDQY3KZBSC27KKYEB7RAJRDWEIEUQYIXHUA6D6WOVXTWVHH`](https://stellar.expert/explorer/testnet/account/GCR6HZKROPDQY3KZBSC27KKYEB7RAJRDWEIEUQYIXHUA6D6WOVXTWVHH) |
-| `register_card` (dépositaire) | [`246cf5…6d32c`](https://stellar.expert/explorer/testnet/tx/246cf5ebeebd77fe2176ef1fa584334a9c6f0e0387e8eed37d45a8ed7526d32c) |
-| `redeem` (collectionneur, événement `burn` du SAC) | [`fb6a62…8977a`](https://stellar.expert/explorer/testnet/tx/fb6a6235c2cac014ed0e1e846945e1cf5b574b25458ba55e0e9946e0e398977a) |
-| `mark_shipped` (dépositaire) | [`342db4…5ed3cf`](https://stellar.expert/explorer/testnet/tx/342db414c65cf3bf04648dde4fd87a280d883b2644c287fd64b733ada25ed3cf) |
-| Paiement x402 réglé par le facilitator | [`4709b9…763c4`](https://stellar.expert/explorer/testnet/tx/4709b937d086eef100fe09bc760bde81f9d84887a7fff12f14beec9268e763c4) |
+| Custodian and deployer | [`GBNZP4YND7GXOM26YNBOAXIMTEMKNHDX7CQ5VZOJ3VKW7HDJSQR3XK75`](https://stellar.expert/explorer/testnet/account/GBNZP4YND7GXOM26YNBOAXIMTEMKNHDX7CQ5VZOJ3VKW7HDJSQR3XK75) |
+| **Vault contract** | [`CDN5OOWTOYKEXMH5CDG7APQRQEHGFRKWQEAHQR5XR3643YOM2YEMEMRO`](https://stellar.expert/explorer/testnet/contract/CDN5OOWTOYKEXMH5CDG7APQRQEHGFRKWQEAHQR5XR3643YOM2YEMEMRO) |
+| Deployment | [`5833d9…978d1`](https://stellar.expert/explorer/testnet/tx/5833d98dd4230adee7f78feb8b34dcf8d8a190cb453c7b0dbf224c1ab25978d1) |
+| Card asset `PSA137798077` (SAC) | [`CASKFD5AFFRLUEW6YJUQRSTXJ7MQU7ZMUCMW254G4CR5QJ45Q5DYNVKH`](https://stellar.expert/explorer/testnet/contract/CASKFD5AFFRLUEW6YJUQRSTXJ7MQU7ZMUCMW254G4CR5QJ45Q5DYNVKH) |
+| Collector (holder) | [`GCR6HZKROPDQY3KZBSC27KKYEB7RAJRDWEIEUQYIXHUA6D6WOVXTWVHH`](https://stellar.expert/explorer/testnet/account/GCR6HZKROPDQY3KZBSC27KKYEB7RAJRDWEIEUQYIXHUA6D6WOVXTWVHH) |
+| `register_card` (custodian) | [`246cf5…6d32c`](https://stellar.expert/explorer/testnet/tx/246cf5ebeebd77fe2176ef1fa584334a9c6f0e0387e8eed37d45a8ed7526d32c) |
+| `redeem` (collector, SAC `burn` event) | [`fb6a62…8977a`](https://stellar.expert/explorer/testnet/tx/fb6a6235c2cac014ed0e1e846945e1cf5b574b25458ba55e0e9946e0e398977a) |
+| `mark_shipped` (custodian) | [`342db4…5ed3cf`](https://stellar.expert/explorer/testnet/tx/342db414c65cf3bf04648dde4fd87a280d883b2644c287fd64b733ada25ed3cf) |
+| x402 payment settled by the facilitator | [`4709b9…763c4`](https://stellar.expert/explorer/testnet/tx/4709b937d086eef100fe09bc760bde81f9d84887a7fff12f14beec9268e763c4) |
 
-Le SHA-256 de `docs/psa-137798077-front.jpg` est `e274a654…0abfa`, inscrit on-chain.
+The SHA-256 of `docs/psa-137798077-front.jpg` is `e274a654…0abfa`, stored on-chain.
 
-## Reproduire
+## Reproduce
 
-Prérequis : Rust + cible `wasm32v1-none`, [Stellar CLI](https://developers.stellar.org/docs/tools/cli) 28, Node 22, une identité testnet financée (`stellar keys generate moi --network testnet --fund`).
+Prerequisites: Rust + the `wasm32v1-none` target, [Stellar CLI](https://developers.stellar.org/docs/tools/cli) 28, Node 22, a funded testnet identity (`stellar keys generate moi --network testnet --fund`).
 
-### 1. Contrat
+### 1. Contract
 
 ```sh
 cargo test                                   # 11 tests
@@ -193,7 +178,7 @@ stellar contract deploy \
   -- --custodian "$MOI"
 ```
 
-### 2. La carte : un actif natif, un SAC, un détenteur
+### 2. The card: a native asset, a SAC, a holder
 
 ```sh
 stellar keys generate collectionneur --network testnet --fund
@@ -201,35 +186,35 @@ COL=$(stellar keys address collectionneur)
 
 stellar tx new change-trust --source-account collectionneur --line "PSA137798077:$MOI" --network testnet
 stellar tx new payment --source-account moi --destination "$COL" \
-  --asset "PSA137798077:$MOI" --amount 10000000 --network testnet          # 1 unité = 1 carte
+  --asset "PSA137798077:$MOI" --amount 10000000 --network testnet          # 1 unit = 1 card
 stellar contract asset deploy --asset "PSA137798077:$MOI" --source-account moi --network testnet --alias card_psa137798077
 ```
 
-### 3. Le cycle complet on-chain
+### 3. The full on-chain cycle
 
 ```sh
-# le dépositaire enregistre la carte (hash = sha256 de docs/psa-137798077-front.jpg)
+# the custodian registers the card (hash = sha256 of docs/psa-137798077-front.jpg)
 stellar contract invoke --id vault --source-account moi --network testnet --send=yes -- \
   register_card --asset_code PSA137798077 --token CASKFD5AFFRLUEW6YJUQRSTXJ7MQU7ZMUCMW254G4CR5QJ45Q5DYNVKH \
   --grader PSA --cert '"137798077"' --grade 10 \
   --description '"2025 Pokemon BLK FR Zekrom ex #166 Special Illustration Rare"' \
   --photo_hash e274a6542ed20a6121176b169f09bf56c8a58ea62653109a9d553aa073a0abfa
 
-# le collectionneur rend le jeton et demande l'expédition
+# the collector returns the token and requests shipping
 stellar contract invoke --id vault --source-account collectionneur --network testnet --send=yes -- \
   redeem --holder "$COL" --asset_code PSA137798077
 
-# le dépositaire confirme l'expédition
+# the custodian confirms shipping
 stellar contract invoke --id vault --source-account moi --network testnet --send=yes -- \
   mark_shipped --asset_code PSA137798077 --tracking '"LA123456789FR"'
 
-# lecture publique
+# public read
 stellar contract invoke --id vault --source-account moi --network testnet -- get_card --asset_code PSA137798077
 ```
 
-Sans `--send=yes`, l'appel est seulement simulé et n'atteint jamais le ledger.
+Without `--send=yes`, the call is only simulated and never reaches the ledger.
 
-### 4. L'agent IA et l'API x402
+### 4. The AI agent and the x402 API
 
 ```sh
 cd apps/agent
@@ -237,53 +222,54 @@ npm install
 cp .env.example .env     # VAULT_CONTRACT_ID, X402_PAY_TO, X402_FACILITATOR_API_KEY, ANTHROPIC_API_KEY, AGENT_SECRET_KEY
 ```
 
-- Clé facilitator testnet, gratuite : `curl https://channels.openzeppelin.com/testnet/gen`
-- Le compte payeur a besoin d'une trustline USDC (`stellar tx new change-trust --line USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5`) et de quelques USDC testnet ([faucet Circle](https://faucet.circle.com), réseau Stellar).
+- Free testnet facilitator key: `curl https://channels.openzeppelin.com/testnet/gen`
+- The paying account needs a USDC trustline (`stellar tx new change-trust --line USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5`) and some testnet USDC ([Circle faucet](https://faucet.circle.com), Stellar network).
 
 ```sh
-node scripts/x402-smoke.mjs                       # paiement x402 réel, sans IA : 402 → 200 + reçu
-npm start                                         # serveur sur :3000
-curl localhost:3000/vault/PSA137798077            # gratuit
-node scripts/pay-and-appraise.mjs PSA137798077    # l'agent paie 0,01 USDC et reçoit l'expertise
+node scripts/x402-smoke.mjs                       # real x402 payment, no AI: 402 → 200 + receipt
+npm start                                         # server on :3000
+curl localhost:3000/vault/PSA137798077            # free
+node scripts/pay-and-appraise.mjs PSA137798077    # the agent pays 0.01 USDC and receives the appraisal
 ```
 
-Pour tester le paiement en XLM plutôt qu'en USDC (pas de faucet nécessaire), côté serveur `X402_ASSET=CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC X402_AMOUNT=1000000` et côté client `AGENT_ALLOWED_ASSET=<même adresse> AGENT_ALLOWED_ASSET_MAX=5000000`.
+To test paying in XLM instead of USDC (no faucet needed), on the server side set `X402_ASSET=CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC X402_AMOUNT=1000000` and on the client side `AGENT_ALLOWED_ASSET=<same address> AGENT_ALLOWED_ASSET_MAX=5000000`.
 
-### 5. La page de la carte (marketplace)
+### 5. The card page (marketplace)
 
-Une page HTML sans framework ni build, dans `apps/web/`, à lancer en local : menu par catégorie et classement Market cap, fiche de la Zekrom avec carte recto/verso, historique des ventes avec courbe, rareté, ventes récentes, dossier de la carte lu dans le contrat, prix d'achat en direct depuis le carnet d'ordres Stellar.
+A plain HTML page with no framework and no build step, in `demo-web-page/`, run locally: category menu and market cap ranking, Zekrom card page with front/back, sales history with chart, rarity, recent sales, card record read from the contract, live buy price from the Stellar order book.
 
 ```sh
-node apps/web/serve.mjs                           # http://localhost:8080/apps/web/
-sh apps/web/seed-market.sh                        # place un ordre de vente et un ordre d'achat sur le DEX Stellar
+node demo-web-page/serve.mjs                           # http://localhost:8080/demo-web-page/
+sh demo-web-page/seed-market.sh                        # places a sell order and a buy order on the Stellar DEX
 ```
 
-- Le **dossier de la carte** est lu en direct via l'agent (`GET /vault/:code`), lancé avec `npm start` dans `apps/agent`.
-- Le **prix d'achat** du bouton Buy now et les **transactions du jeton** sont lus en direct sur Horizon, l'API publique de Stellar, pour la paire `PSA137798077 / XLM`.
-- L'historique des ventes, la population, le tableau du marché et le classement Market cap sont des données de démonstration dans `apps/web/data/`. Les images du classement viennent de TCGdex, pokemontcg.io et des archives Bulbagarden.
+- The **card record** is read live through the agent (`GET /vault/:code`), started with `npm start` in `apps/agent`.
+- The **buy price** on the Buy now button and the **token's transactions** are read live from Horizon, Stellar's public API, for the `PSA137798077 / XLM` pair.
+- Sales history, population, the market table and the market cap ranking are demo data in `demo-web-page/data/`. Ranking images come from TCGdex, pokemontcg.io and the Bulbagarden archives.
 
-## Ce qui est réel, ce qui reste
+## What is real, what remains
 
-| Dans ce dépôt, vérifié sur le testnet | À HackMeridian |
+| In this repo, verified on testnet | At HackMeridian |
 |---|---|
-| Contrat du coffre déployé, cycle complet enregistré → rendu → expédié avec une vraie carte | La marketplace branchée : achat et vente depuis la page, historique des ventes indexé depuis les transactions du jeton |
-| Page de la carte (`apps/web`) : fiche on-chain et carnet d'ordres lus en direct, courbe, population, indice de confiance | Plusieurs cartes, wallet connecté (Freighter), paiement fiat via anchor |
-| Carte = actif natif + SAC, jeton brûlé au `redeem` | Plusieurs cartes réelles du stock, vente sur le carnet d'ordres en direct |
-| Paiement x402 sur Stellar réglé on-chain par le facilitator | **Le contrat de séquestre** : `open` verrouille les USDC de l'acheteur, `release` paie le vendeur, `refund` rembourse après délai ou litige |
-| Agent IA d'expertise : lecture on-chain, vérification SHA-256, sortie structurée. Contrat et tests construits avec un agent de code branché sur Raven | **Le programme de surveillance, sans IA** : écoute le transporteur et les événements on-chain, déclenche `release` ou `refund` selon les règles du contrat ; les litiges vont à un humain |
-| Wallet d'agent plafonné côté client | L'agent qui achète pour un collectionneur dans sa limite de dépense ; vidéo de 30 s en plan B |
+| Vault contract deployed, full cycle registered → returned → shipped with a real card | The connected marketplace: buy and sell from the page, sales history indexed from the token's transactions |
+| Card page (`demo-web-page`): on-chain record and order book read live, chart, population, trust score | Several cards, connected wallet (Freighter), fiat payment through an anchor |
+| Card = native asset + SAC, token burned on `redeem` | Several real cards from our stock, live trading on the order book |
+| x402 payment on Stellar settled on-chain by the facilitator | **The escrow contract**: `open` locks the buyer's USDC, `release` pays the seller, `refund` reimburses after a timeout or dispute |
+| AI appraisal agent: on-chain read, SHA-256 check, structured output. Contract and tests built with a coding agent connected to Raven | **The monitoring program, no AI**: listens to the carrier and on-chain events, triggers `release` or `refund` according to the contract rules; disputes go to a human |
+| Capped agent wallet on the client side | The agent that buys for a collector within their spending limit; 30-second video as a fallback |
 
-Ensuite : l'empreinte physique de la carte (scan haute résolution sous éclairage fixe, hash on-chain, re-scan à la sortie) ou un scellé NFC inviolable sur le boîtier, puis les cartes brutes via le service d'authentification et de notation à l'entrée en coffre, et le fiat par les anchors Stellar.
+Next: a physical fingerprint of the card (high-resolution scan under fixed lighting, hash on-chain, re-scan on exit) or a tamper-proof NFC seal on the slab, then raw cards through the authentication and grading service at vault intake, and fiat through Stellar anchors.
 
 ## Structure
 
 ```
-contracts/vault/src/lib.rs    # le contrat du coffre, ~150 lignes commentées
+contracts/vault/src/lib.rs    # the vault contract, ~150 commented lines
 contracts/vault/src/test.rs   # 11 tests
 apps/agent/src/               # config, vault, photos, appraise, paywall, payer, server
 apps/agent/scripts/           # x402-smoke.mjs, pay-and-appraise.mjs
-apps/web/                     # single page : index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
-docs/                         # photos de référence de la carte
-VISION.md                     # la vision hackathon (2000 caractères)
-AGENTS.md                     # contexte pour les agents de code
+demo-web-page/                     # single page: index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
+docs/                         # reference photos of the card, architecture diagram (.excalidraw + .svg)
+README.fr.md                  # this README in French
+VISION.md                     # the hackathon vision (2000 characters)
+AGENTS.md                     # context for coding agents
 ```

@@ -8,8 +8,8 @@
   "grade": "10",
   "grade_label": "GEM MT 10",
   "cert": "137798077",
-  "image": "../../docs/psa-137798077-front.jpg",
-  "image_back": "../../docs/psa-137798077-back.jpg",
+  "image": "../docs/psa-137798077-front.jpg",
+  "image_back": "../docs/psa-137798077-back.jpg",
   "population": {
     "grader": "PSA",
     "total": 164,

@@ -16,7 +16,7 @@ import { CardNotFoundError, getCard } from "./vault.js";
 const app = express();
 app.use(express.json({ limit: "16kb" }));
 
-// La page apps/web lit les routes gratuites depuis un autre port.
+// La page demo-web-page lit les routes gratuites depuis un autre port.
 app.use((_req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
   next();

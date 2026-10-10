@@ -5,7 +5,7 @@
 Card Place (The first secure card exchange) : registre on-chain de cartes gradées conservées en coffre, sur Stellar.
 - `contracts/vault/` — contrat Soroban (Rust, `soroban-sdk` 28). Seule brique vérifiée on-chain.
 - `apps/agent/` — agent IA d'expertise (Node 22+, ESM) vendu à l'appel via x402 sur Stellar.
-- `apps/web/` — page de la carte (marketplace), HTML/CSS/JS statique, lit l'agent et Horizon.
+- `demo-web-page/` — page de la carte (marketplace), HTML/CSS/JS statique, lit l'agent et Horizon.
 - `docs/` — photos de référence des cartes (recto/verso), nommées `<gradeur>-<cert>-front.jpg`.
 
 ## Règles de la chaîne d'outils (ne pas régresser)
@@ -30,11 +30,11 @@ node scripts/x402-smoke.mjs      # paiement x402 réel sur testnet (sans IA)
 npm start                        # serveur sur :3000
 
 # page web (depuis la racine du dépôt)
-node apps/web/serve.mjs          # http://localhost:8080/apps/web/ — lit l'agent (:3000) et Horizon
-sh apps/web/seed-market.sh       # ordres de vente/achat sur le DEX pour remplir le carnet
+node demo-web-page/serve.mjs          # http://localhost:8080/demo-web-page/ — lit l'agent (:3000) et Horizon
+sh demo-web-page/seed-market.sh       # ordres de vente/achat sur le DEX pour remplir le carnet
 ```
 
-`apps/web/` est du HTML/CSS/JS sans framework ni build : garder ainsi. Données de démo dans `apps/web/data/zekrom.json`.
+`demo-web-page/` est du HTML/CSS/JS sans framework ni build : garder ainsi. Données de démo dans `demo-web-page/data/zekrom.json`.
 
 ## Invariants du contrat
 

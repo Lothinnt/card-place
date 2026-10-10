@@ -1,13 +1,13 @@
 // Serveur statique minimal, sans dépendance : sert la racine du dépôt
-// (pour que /docs/… et /apps/web/… soient accessibles) et ouvre la page carte.
+// (pour que /docs/… et /demo-web-page/… soient accessibles) et ouvre la page carte.
 //
-//   node apps/web/serve.mjs            → http://localhost:8080/apps/web/
+//   node demo-web-page/serve.mjs            → http://localhost:8080/demo-web-page/
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PORT = Number(process.env.PORT ?? 8080);
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".mjs": "text/javascript",
   ".json": "application/json", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".svg": "image/svg+xml" };
@@ -24,4 +24,4 @@ createServer(async (req, res) => {
   } catch (err) {
     res.writeHead(err.code === "EACCES" ? 403 : 404); res.end("not found");
   }
-}).listen(PORT, () => console.log(`Card Place web → http://localhost:${PORT}/apps/web/`));
+}).listen(PORT, () => console.log(`Card Place web → http://localhost:${PORT}/demo-web-page/`));

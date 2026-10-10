@@ -6,8 +6,8 @@
 # Les deux ordres ne se croisent pas, le carnet affiche donc un prix d'achat,
 # un prix de vente et un spread. Pour exécuter un échange, rapprochez les prix.
 #
-#   sh apps/web/seed-market.sh            # prix par défaut : vente 2100 XLM, achat 1900 XLM
-#   ASK=2000 BID=1950 sh apps/web/seed-market.sh
+#   sh demo-web-page/seed-market.sh            # prix par défaut : vente 2100 XLM, achat 1900 XLM
+#   ASK=2000 BID=1950 sh demo-web-page/seed-market.sh
 set -eu
 
 CODE="${CODE:-PSA137798077}"
