@@ -270,6 +270,5 @@ apps/agent/scripts/           # x402-smoke.mjs, pay-and-appraise.mjs
 demo-web-page/                # single page: index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
 docs/                         # reference photos of the card, architecture diagram (.excalidraw + .svg)
 README.fr.md                  # this README in French
-VISION.md                     # the project vision
 AGENTS.md                     # context for coding agents
 ```
