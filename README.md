@@ -1,6 +1,6 @@
 # Card Place — The first secure card exchange
 
-**English** · [Français](README.fr.md)
+<p align="center"><b>🇬🇧 English</b> &nbsp;|&nbsp; <a href="README.fr.md">🇫🇷 Français</a></p>
 
 **A secure exchange to invest in trading cards the way you invest in a stock**: an order book, a public price, sales history on the blockchain, charts, authentication at the core, and the option to leave the card in a vault, so the item can be sold many times while staying in the same place.
 

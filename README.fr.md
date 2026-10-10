@@ -1,6 +1,6 @@
 # Card Place — The first secure card exchange
 
-[English](README.md) · **Français**
+<p align="center"><a href="README.md">🇬🇧 English</a> &nbsp;|&nbsp; <b>🇫🇷 Français</b></p>
 
 **Un exchange sécurisé pour investir dans les cartes à collectionner comme dans une action** : carnet d'ordres, prix public, historique des ventes dans la blockchain, graphique, authentification au centre, et la possibilité de laisser la carte en coffre : l'article peut se vendre plusieurs fois tout en restant au même endroit.
 
@@ -104,26 +104,11 @@ Honnêteté : [StockX](https://stockx.com) a prouvé le modèle carnet d'ordres 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    subgraph Stellar["Stellar testnet"]
-        T["Actif natif PSA137798077<br/>1 unité, émetteur = dépositaire"]
-        OB["Carnet d'ordres natif<br/>prix public, historique public"]
-        V["Contrat Soroban : le coffre<br/>cert · note · hash photo · état"]
-        USDC["USDC (SEP-41)"]
-    end
+<p align="center">
+  <img src="docs/architecture.svg" alt="Architecture de Card Place : dépositaire, collectionneur, contrat Soroban du coffre, jeton de la carte, carnet d'ordres natif, USDC, agent IA d'expertise, facilitator x402" width="100%">
+</p>
 
-    D["Dépositaire<br/>Graded Card Shop"] -- "register_card<br/>mark_shipped" --> V
-    C["Collectionneur"] <-- "achète / revend" --> OB
-    OB --- T
-    C -- "redeem : rend le jeton,<br/>demande l'expédition" --> V
-    V -- "transfert SAC → émetteur = burn" --> T
-
-    A["Agent IA d'expertise<br/>apps/agent"] -- "get_card (lecture)" --> V
-    W["Wallet d'agent plafonné<br/>(l'acheteur)"] -- "POST /api/appraise<br/>402 → paiement → 200" --> A
-    W -- "0,01 USDC" --> USDC
-    F["Facilitator x402"] -- "vérifie, règle, sponsorise les frais" --> USDC
-```
+Source : [`docs/architecture.excalidraw`](docs/architecture.excalidraw), modifiable sur [excalidraw.com](https://excalidraw.com) (Open → choisir le fichier).
 
 Lecture : le dépositaire écrit la fiche, le marché vit sur le carnet d'ordres natif, l'agent lit la fiche et se fait payer en USDC, le `redeem` brûle le jeton et déclenche l'expédition.
 
@@ -283,7 +268,8 @@ contracts/vault/src/test.rs   # 11 tests
 apps/agent/src/               # config, vault, photos, appraise, paywall, payer, server
 apps/agent/scripts/           # x402-smoke.mjs, pay-and-appraise.mjs
 demo-web-page/                     # single page : index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
-docs/                         # photos de référence de la carte
+docs/                         # photos de référence de la carte, schéma d'architecture (.excalidraw + .svg)
+README.md                     # ce README en anglais
 VISION.md                     # la vision hackathon (2000 caractères)
 AGENTS.md                     # contexte pour les agents de code
 ```
