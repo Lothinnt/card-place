@@ -35,7 +35,7 @@ The marketplace provides reliable data so users can make better investment decis
 
 Sellers can deposit their card in a vault. It is then represented by **a native Stellar asset** (code = certificate number, 1 unit issued). The token trades on the native order book in 5 seconds for a fraction of a cent, which makes transactions safer and easier. The physical card only travels once: when the final holder calls `redeem()`, returns the token and receives the card.
 
-**Demo line:** three pillars carry every trade: a Soroban smart contract that holds the card in the vault and locks the money in escrow; x402 on Stellar so services get paid per call in USDC; and AI where it helps, a coding agent to build and deploy the contract and an appraisal agent paid per call, never in transaction validation, which stays deterministic code.
+**Three pillars carry every trade:** a Soroban smart contract that holds the card in the vault and locks the money in escrow; x402 on Stellar so services get paid per call in USDC; and AI where it helps, a coding agent to build and deploy the contract and an appraisal agent paid per call, never in transaction validation, which stays deterministic code.
 
 ### The user journey
 
@@ -256,7 +256,7 @@ sh demo-web-page/seed-market.sh                        # places a sell order and
 | Card = native asset + SAC, token burned on `redeem` | Several real cards from our stock, live trading on the order book |
 | x402 payment on Stellar settled on-chain by the facilitator | **The escrow contract**: `open` locks the buyer's USDC, `release` pays the seller, `refund` reimburses after a timeout or dispute |
 | AI appraisal agent: on-chain read, SHA-256 check, structured output. Contract and tests built with a coding agent connected to Raven | **The monitoring program, no AI**: listens to the carrier and on-chain events, triggers `release` or `refund` according to the contract rules; disputes go to a human |
-| Capped agent wallet on the client side | The agent that buys for a collector within their spending limit; 30-second video as a fallback |
+| Capped agent wallet on the client side | The agent that buys for a collector within their spending limit |
 
 Next: a physical fingerprint of the card (high-resolution scan under fixed lighting, hash on-chain, re-scan on exit) or a tamper-proof NFC seal on the slab, then raw cards through the authentication and grading service at vault intake, and fiat through Stellar anchors.
 
@@ -270,6 +270,6 @@ apps/agent/scripts/           # x402-smoke.mjs, pay-and-appraise.mjs
 demo-web-page/                # single page: index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
 docs/                         # reference photos of the card, architecture diagram (.excalidraw + .svg)
 README.fr.md                  # this README in French
-VISION.md                     # the hackathon vision (2000 characters)
+VISION.md                     # the project vision
 AGENTS.md                     # context for coding agents
 ```

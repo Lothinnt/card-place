@@ -35,7 +35,7 @@ La marketplace fournit des données fiables qui permettent aux utilisateurs de p
 
 Nous offrons au vendeur la possibilité de déposer sa carte dans un coffre-fort. Elle est alors représentée par **un actif Stellar natif** (code = numéro de certificat, 1 unité émise). Le jeton s'échange sur le carnet d'ordres natif, en 5 secondes, pour une fraction de centime, ce qui sécurise et facilite les transactions. Le physique ne voyage qu'une fois : quand le détenteur final appelle `redeem()`, rend le jeton et reçoit la carte.
 
-**Phrase de démo :** je montre que trois piliers portent chaque échange : un smart contract Soroban qui tient la carte en coffre et bloque l'argent en séquestre ; x402 sur Stellar pour que les services se paient à l'appel en USDC ; et l'IA là où elle est utile, un agent de code pour construire et déployer le contrat, un agent d'expertise payé à l'appel, jamais dans la validation des transactions, qui reste du code déterministe.
+**Trois piliers portent chaque échange :** un smart contract Soroban qui tient la carte en coffre et bloque l'argent en séquestre ; x402 sur Stellar pour que les services se paient à l'appel en USDC ; et l'IA là où elle est utile, un agent de code pour construire et déployer le contrat, un agent d'expertise payé à l'appel, jamais dans la validation des transactions, qui reste du code déterministe.
 
 ### Le parcours utilisateur
 
@@ -256,7 +256,7 @@ sh demo-web-page/seed-market.sh                        # place un ordre de vente
 | Carte = actif natif + SAC, jeton brûlé au `redeem` | Plusieurs cartes réelles du stock, vente sur le carnet d'ordres en direct |
 | Paiement x402 sur Stellar réglé on-chain par le facilitator | **Le contrat de séquestre** : `open` verrouille les USDC de l'acheteur, `release` paie le vendeur, `refund` rembourse après délai ou litige |
 | Agent IA d'expertise : lecture on-chain, vérification SHA-256, sortie structurée. Contrat et tests construits avec un agent de code branché sur Raven | **Le programme de surveillance, sans IA** : écoute le transporteur et les événements on-chain, déclenche `release` ou `refund` selon les règles du contrat ; les litiges vont à un humain |
-| Wallet d'agent plafonné côté client | L'agent qui achète pour un collectionneur dans sa limite de dépense ; vidéo de 30 s en plan B |
+| Wallet d'agent plafonné côté client | L'agent qui achète pour un collectionneur dans sa limite de dépense |
 
 Ensuite : l'empreinte physique de la carte (scan haute résolution sous éclairage fixe, hash on-chain, re-scan à la sortie) ou un scellé NFC inviolable sur le boîtier, puis les cartes brutes via le service d'authentification et de notation à l'entrée en coffre, et le fiat par les anchors Stellar.
 
@@ -270,6 +270,6 @@ apps/agent/scripts/           # x402-smoke.mjs, pay-and-appraise.mjs
 demo-web-page/                # single page : index.html, styles.css, app.js, data/, img/, serve.mjs, seed-market.sh
 docs/                         # photos de référence de la carte, schéma d'architecture (.excalidraw + .svg)
 README.md                     # ce README en anglais
-VISION.md                     # la vision hackathon (2000 caractères)
+VISION.md                     # la vision du projet
 AGENTS.md                     # contexte pour les agents de code
 ```

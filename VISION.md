@@ -1,8 +1,4 @@
-# Vision hackathon — Card Place
-
-Texte prêt pour le formulaire 42Blockchain (champ « Ta vision hackathon », 2000 caractères max).
-
----
+# Card Place — Vision
 
 Je vends des cartes à collectionner (GradedCardShop). Ce marché souffre de trois maux : l'opacité des prix (pas de référence publique, ventes privées, historiques invisibles), l'état réel de la carte (photos du vendeur, notation subjective, litiges) et la contrefaçon (cartes et boîtiers falsifiés). S'y ajoute le coût de chaque revente : transport, commission de 5 à 12 %, jours d'attente.
 
